@@ -14,7 +14,7 @@ for d in data['docs']:
 
 base_datos = "personas004"
 # Configurar el acceso a la base de datos
-url = f"http://127.0.0.1:5984/{base_datos}"
+url = f"http://127.0.0.1:5985/{base_datos}"
 headers = {'Content-Type': 'application/json'}
 
 # Enviar datos
@@ -25,3 +25,7 @@ for doc in lista_datos:
         json=doc
     )
     print(f"Insertando {doc['nombre']} | {response.status_code}")
+
+# En el ejemplo 2 lo que se esta haciendo es enviando el archivo completo a la base de datos
+# En el ejemplo 3 lo que esta haciendo es subiendo a las personas cuyo nombre empiecen por A B o L haciendo una sola lectura ya que se esta usando el _bulk_docs que manda todos los datos
+# En el ejemplo 4 hace lo mismo que en el 3 a diferencia que esta al usar el port sin la terminacion del _bulk_docs esta va a recorrer el numero de datos que haya mientras que en el anterior solamente lo hacia de una sola usando el _bulk_docs
